@@ -1,0 +1,32 @@
+{ 
+  "energy": {
+    "username": "intern",
+    "password": "intern",
+    "database": "energy",
+    "host": "192.168.9.47",
+    "port": "3306",
+    "timezone": "+07:00",
+    "dialect": "mysql",
+    "logging": false
+  },
+  "utility_visualization": {
+    "username": "intern",
+    "password": "intern",
+    "database": "utility_visualization",
+    "host": "192.168.9.47",
+    "port": "3306",
+    "timezone": "+07:00",
+    "dialect": "mysql",
+    "logging": false
+  },
+  "employee": {
+    "username": "intern",
+    "password": "intern",
+    "database": "aio_employee",
+    "host": "192.168.9.47",
+    "timezone": "+07:00",
+    "port": "6446",
+    "dialect": "mysql",
+    "logging": false
+  }
+}
