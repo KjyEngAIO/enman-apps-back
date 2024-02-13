@@ -10,7 +10,6 @@ exports.auth = (username, password) => {
 exports.login = (nik) => {
   const query = 
   `SELECT * FROM ${table} WHERE lg_nik = '${nik}' LIMIT 1`;
-  console.log(query);
   return query;
 }
 exports.login_nik = (nik, hashedPassword) => {

@@ -26,33 +26,33 @@ exports.login = async (req, res) => {
     const { username, password } = req.body;
     const hashedPassword = CryptoJS.MD5(password).toString();
     const ipAddress = req.ip || req.connection.remoteAddress;
-
+    
     if (username == "" || password == "") {
       return res
-        .status(400)
-        .json({ message: "Please fill all fields before submit" });
+      .status(400)
+      .json({ message: "Please fill all fields before submit" });
     }
-
+    
     const findUserByNIK = await aioEmployee.select(
       modelPhpMsLogin.login(username)
-    );
-    
-    if (
-      findUserByNIK.length === 0 ||
+      );
+      
+      if (
+        findUserByNIK.length === 0 ||
       findUserByNIK[0].lg_password !== hashedPassword
     ) {
       return res
-        .status(400)
+      .status(400)
         .json({ message: "Please check your NIK or Password" });
-    }
-
+      }
+      
     const response = await aioEmployee.select(
       modelPhpMsLogin.login_nik(username, hashedPassword)
     );
     if (response.length === 0) {
       return res
-        .status(400)
-        .json({ message: "Please check your NIK or Password" });
+      .status(400)
+      .json({ message: "Please check your NIK or Password" });
     }
 
     const data = {
