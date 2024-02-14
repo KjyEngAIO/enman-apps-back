@@ -6,6 +6,7 @@ var modelSteam = require("./../../models/utility_visualization/p_steam_monthly")
 var modelProduct = require("./../../models/utility_visualization/p_products");
 var modelEnergyGjPerKl = require("./../../models/energy/energy_gj_per_kl");
 var apiResponse = require('./../../traits/api-response');
+var modelDetailDowntime = require("./../../models/utility_visualization/detail_downtime");
 
 exports.getWaterIndex = async (req, res) => {
 	try {
@@ -82,3 +83,16 @@ exports.getProductionOutput = async (req, res) => {
 		return res.status(500).json({ error: error.message });
 	}
 };
+
+exports.getBigDowntimeUtility = async (req, res) => {
+	try {
+	  const tahun = req.query.tahun;
+	  var response = await utilVisual.select(
+		modelDetailDowntime.getBigDowntimeUtility(tahun)
+	  );
+	  return res.status(200).json(response);
+	} catch (error) {
+	  return res.status(500).json({ error: error.message });
+	}
+  };
+  

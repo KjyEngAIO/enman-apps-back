@@ -8,5 +8,6 @@ router.get('/electricity-index', factoryReportController.getElectricityIndex);
 router.get('/steam-index', factoryReportController.getSteamIndex);
 router.get('/energy-index-gj-kl', factoryReportController.getEnergyIndexGjKl);
 router.get('/production-plan-report', factoryReportController.getProductionOutput);
+router.get('/getbigdowntime', factoryReportController.getBigDowntimeUtility);
 
 module.exports = router

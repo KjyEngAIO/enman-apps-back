@@ -3,56 +3,6 @@ const moment = require("moment/moment");
 var currentYear = (moment().format('MM') == 1) ? moment().format('YYYY') - 1 : moment().format('YYYY')
 var lastYear = (moment().format('MM') == 1) ? moment().format('YYYY') - 2 : moment().format('YYYY') -1
 
-// Chart Trend Energy High Press Compressor
-exports.ComparisonfindByYear = (tahun) => {
-  const query = `SELECT 
-			date_format(month, '%m-%Y') AS 'bulantahun', 
-			date_format(month, '%m') AS 'bulan', 
-			filled_bottle_350 as filled_bottle 
-    FROM ${table} 
-    WHERE YEAR(month)='${tahun}' 
-    GROUP BY bulantahun 
-    ORDER BY month ASC`;
-  return query;
-};
-
-// Chart Trend Energy Low Press Compressor
-exports.indexLpTotalizerComparison = (tahun) => {
-  const query = `SELECT 
-      date_format(month, '%m-%Y') AS 'monthyear', 
-      filled_bottle_350 as filled_bottle 
-    FROM ${table} WHERE YEAR(month)='${tahun}' 
-    GROUP BY monthyear ORDER BY month ASC`;
-  return query;
-};
-
-exports.findByYear = (year) => {
-  const query = `SELECT 
-      date_format(Month, '%m-%Y') as month, 
-      date_format(Month, '%M') as months,  
-      filled_bottle_350 
-    FROM ${table} 
-    WHERE year(Month)=${year}`;
-  return query;
-};
-
-exports.findGroupByYear = () => {
-  const query = `SELECT 
-      YEAR(Month) as yearly, 
-      SUM(filled_bottle_350) as filled_bottle_350
-    FROM ${table} GROUP BY yearly`;
-  return query;
-};
-
-exports.findAll = () => {
-  const query = `SELECT 
-      date_format(Month, '%m-%Y') as month, 
-      date_format(Month, '%M') as months,  
-      filled_bottle_350 
-	  FROM ${table}`;
-  return query;
-};
-
 exports.productionOutput = () => {
   const query = `    
     SELECT 
